@@ -10,3 +10,12 @@
 *.lai
 *.la
 *.a
+
+# Build directory
+build
+
+# CMake temporary files
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
