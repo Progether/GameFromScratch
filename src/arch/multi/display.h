@@ -1,4 +1,4 @@
-#include "GL/glfw.h"
+#include <GL/glfw.h>
 
 class GameDisplay
 {
@@ -7,5 +7,5 @@ public:
 	~GameDisplay();
 
 	void createDisplay();
-	void getScreenSize(int *width, int *height);
+	void getScreenSize(int* width, int* height);
 };

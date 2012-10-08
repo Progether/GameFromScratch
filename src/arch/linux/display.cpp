@@ -1,6 +1,6 @@
-#include "display.h"
 #include <assert.h>
 
+#include "display.h"
 
 void GameDisplay::createDisplay()
 {
@@ -32,7 +32,4 @@ void GameDisplay::createDisplay()
 	// Draw the line
 	XDrawLine(m_display, m_window, gc, 10, 60, 180, 20);
 	XFlush(m_display);
-
-
-
 }

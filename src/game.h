@@ -9,10 +9,8 @@ public:
 	Game(){/*..*/};
 	void initialize();
 
-	private:
+private:
 	GameDisplay m_display;
-
-
 };
 
 #endif //__GAME_H__
