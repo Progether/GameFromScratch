@@ -1,6 +1,8 @@
-#include "game.h"
 #include <unistd.h>
+#include <GL/gl.h>
+#include <GL/glfw.h>
 
+#include "game.h"
 
 int main()
 {
