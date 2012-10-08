@@ -13,7 +13,7 @@ INCLUDE_DIRECTORIES(${GameFromScratch_IncludeDirs})
 add_executable(WindowTest ${WindowTest_src} ${WindowTest_inc})
 
 find_package(OpenGL)
-target_link_libraries(WindowTest glfw ${OPENGL_LIBRARIES})
+target_link_libraries(WindowTest ${OPENGL_LIBRARIES})
 
 LINK_DIRECTORIES(${CMAKE_BINARY_DIR}/lib)
 TARGET_LINK_LIBRARIES(WindowTest GameFromScratch)

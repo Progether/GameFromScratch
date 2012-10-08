@@ -6,3 +6,8 @@ void Game::initialize()
 	return;
 }
 
+GameDisplay *Game::getDisplay()
+{
+	return &m_display;
+}
+

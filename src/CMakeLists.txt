@@ -13,7 +13,7 @@ set(GameFromScratch_IncludeDirs
 )
 
 #Set platform dependend files
-OPTION(USE_GLFW "Use GLFW instead of custom opengl/window creation" OFF)
+OPTION(USE_GLFW "Use GLFW instead of custom opengl/window creation" ON)
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     IF(NOT USE_GLFW)
         set(Platform_Dir ${CMAKE_CURRENT_SOURCE_DIR}/arch/linux/)

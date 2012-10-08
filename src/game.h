@@ -9,6 +9,7 @@ public:
 	Game(){/*..*/};
 	void initialize();
 
+	GameDisplay *getDisplay();
 	private:
 	GameDisplay m_display;
 

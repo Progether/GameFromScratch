@@ -8,4 +8,5 @@ public:
 
 	void createDisplay();
 	void getScreenSize(int *width, int *height);
+	void swapBuffers();
 };
