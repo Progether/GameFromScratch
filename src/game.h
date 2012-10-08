@@ -10,7 +10,7 @@ public:
 	void initialize();
 
 	private:
-	Display m_display;
+	GameDisplay m_display;
 
 
 };

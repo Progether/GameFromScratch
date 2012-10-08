@@ -1,13 +1,19 @@
 #ifndef __DISPLAY_H__
 #define __DISPLAY_H__
 
-class Display
+#include <X11/Xlib.h>
+
+class GameDisplay
 {
 public:
-	Display(){/*........*/};
+	GameDisplay(){/*.....*/};
 	void createDisplay();
+	void testDisplay();
 
 private:
+	Display *m_display;
+	Window m_window;
+	GC gc;
 
 };
 
