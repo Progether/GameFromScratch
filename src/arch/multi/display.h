@@ -7,5 +7,6 @@ public:
 	~GameDisplay();
 
 	void createDisplay();
-	void getScreenSize(int* width, int* height);
+	void getScreenSize(int *width, int *height);
+	void swapBuffers();
 };

@@ -33,3 +33,8 @@ void GameDisplay::createDisplay()
 	XDrawLine(m_display, m_window, gc, 10, 60, 180, 20);
 	XFlush(m_display);
 }
+
+void GameDisplay::swapBuffers()
+{
+	return;
+}

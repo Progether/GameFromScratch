@@ -9,6 +9,7 @@ public:
 	GameDisplay(){/*.....*/};
 	void createDisplay();
 	void testDisplay();
+	void swapBuffers();
 
 private:
 	Display *m_display;

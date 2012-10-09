@@ -1,6 +1,5 @@
 #include <unistd.h>
 #include <GL/gl.h>
-#include <GL/glfw.h>
 
 #include "game.h"
 
@@ -18,6 +17,6 @@ int main()
 	glVertex3f(0, 1, 0);
 	glEnd();
 
-	glfwSwapBuffers();
+	testGame.getDisplay()->swapBuffers();
 	sleep(5);
 }
