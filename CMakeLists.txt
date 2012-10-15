@@ -6,6 +6,11 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
+#Naively assume if on linux that the compiler is gcc or clang
+if(UNIX)
+    list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
+endif(UNIX)
+
 add_subdirectory (src)
 
 OPTION(ENABLE_TESTS "Build tests" ON)

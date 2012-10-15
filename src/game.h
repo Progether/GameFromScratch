@@ -6,12 +6,23 @@
 class Game
 {
 public:
-	Game(){/*..*/};
+	static Game* getInstance();
 	void initialize();
 
 	GameDisplay *getDisplay();
-	private:
+
+	void exitGame();
+	bool isRunning();
+
+private:
 	GameDisplay m_display;
+	Game(){ m_running = true;}
+	Game(const Game&);
+	Game& operator=(const Game&);
+
+	static bool instanceFlag;
+	static Game* gameInstance;
+	bool m_running;
 
 
 };

@@ -1,5 +1,10 @@
 #include "display.h"
 #include "stdio.h"
+#include "game.h"
+
+GameDisplay::GameDisplay()
+{
+}
 
 GameDisplay::~GameDisplay()
 {
@@ -11,6 +16,8 @@ void GameDisplay::createDisplay()
 	glfwInit();
 	if(glfwOpenWindow(0,0,0,0,0,0,0,0,GLFW_WINDOW) != GL_TRUE)
 		throw -1;
+
+	glfwSetWindowCloseCallback(closeDisplay);
 	return;
 }
 
@@ -24,4 +31,11 @@ void GameDisplay::swapBuffers()
 {
 	glfwSwapBuffers();
 	return;
+}
+
+int GLFWCALL closeDisplay()
+{
+	Game::getInstance()->exitGame();
+	glfwTerminate();
+	return 1;
 }
