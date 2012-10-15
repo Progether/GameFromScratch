@@ -1,3 +1,5 @@
+#include <cstdio>
+
 #include "display.h"
 #include "stdio.h"
 #include "game.h"
@@ -21,7 +23,7 @@ void GameDisplay::createDisplay()
 	return;
 }
 
-void GameDisplay::getScreenSize(int* width, int*height)
+void GameDisplay::getScreenSize(int* width, int* height)
 {
 	glfwGetWindowSize(width, height);
 	return;

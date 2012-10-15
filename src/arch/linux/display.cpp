@@ -1,6 +1,6 @@
-#include "display.h"
 #include <assert.h>
 
+#include "display.h"
 
 void GameDisplay::createDisplay()
 {

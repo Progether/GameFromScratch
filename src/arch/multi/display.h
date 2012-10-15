@@ -1,7 +1,7 @@
 #ifndef __DISPLAY_H__
 #define __DISPLAY_H__
 
-#include "GL/glfw.h"
+#include <GL/glfw.h>
 
 int GLFWCALL closeDisplay();
 
@@ -14,8 +14,6 @@ public:
 	void createDisplay();
 	void getScreenSize(int *width, int *height);
 	void swapBuffers();
-
-
 };
 
 #endif

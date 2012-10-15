@@ -15,7 +15,6 @@ Game *Game::getInstance()
 void Game::initialize()
 {
 	m_display.createDisplay();
-	return;
 }
 
 GameDisplay *Game::getDisplay()

@@ -15,7 +15,6 @@ private:
 	Display *m_display;
 	Window m_window;
 	GC gc;
-
 };
 
 #endif //__DISPLAY_H__
