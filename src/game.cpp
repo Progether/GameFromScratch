@@ -1,4 +1,5 @@
 #include "game.h"
+#include "GL/glew.h"
 
 bool Game::instanceFlag = false;
 Game* Game::gameInstance = nullptr;
@@ -15,6 +16,7 @@ Game *Game::getInstance()
 void Game::initialize()
 {
 	m_display.createDisplay();
+	glewInit();
 }
 
 GameDisplay *Game::getDisplay()

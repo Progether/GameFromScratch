@@ -1,10 +1,12 @@
 #Set platform independent src and include files
 set(GameFromScratch_src
     game.cpp
+    entity.cpp
 )
 
 set(GameFromScratch_inc
     game.h
+    entity.h
 )
 
 #Set the include directories
@@ -14,6 +16,7 @@ set(GameFromScratch_IncludeDirs
 
 #Set platform dependend files
 OPTION(USE_GLFW "Use GLFW instead of custom opengl/window creation" ON)
+
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     IF(NOT USE_GLFW)
         set(Platform_Dir ${CMAKE_CURRENT_SOURCE_DIR}/arch/linux/)
@@ -22,8 +25,8 @@ ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 IF(USE_GLFW)
     set(Platform_Dir ${CMAKE_CURRENT_SOURCE_DIR}/arch/multi/)
-    list(APPEND ${GameFromScratch_IncludeDirs}
-)
+    list(APPEND GameFromScratch_IncludeDirs
+        ${Platform_Dir})
 ENDIF(USE_GLFW)
 
 list(APPEND GameFromScratch_src
@@ -58,17 +61,16 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 IF( USE_GLFW)
-    find_package(OpenGL)
+    find_package(PkgConfig)
+    pkg_check_modules(GLEW REQUIRED)
+    if(GLEW_FOUND)
+            list(APPEND CMAKE_LIBRARY_PATH ${GLEW_LIBDIR})
+    endif(GLEW_FOUND)
+
     target_link_libraries(GameFromScratch
         glfw
+        GLEW
         ${OPENGL_LIBRARIES}
     )
 ENDIF(USE_GLFW)
-
-OPTION(USE_ALLEGRO "Use allegro?" OFF)
-if(USE_ALLEGRO)
-    find_package(PkgConfig)
-    pkg_check_modules (ALLEGRO REQUIRED allegro-5.0)
-    target_link_libraries(GameFromScratch ${ALLEGRO_LDFLAGS}  )
-endif(USE_ALLEGRO)
 

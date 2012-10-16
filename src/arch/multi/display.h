@@ -1,9 +1,9 @@
 #ifndef __DISPLAY_H__
 #define __DISPLAY_H__
 
+#include <GL/glew.h>
 #include <GL/glfw.h>
 
-int GLFWCALL closeDisplay();
 
 class GameDisplay
 {
@@ -15,5 +15,7 @@ public:
 	void getScreenSize(int *width, int *height);
 	void swapBuffers();
 };
+
+int GLFWCALL closeDisplay();
 
 #endif
