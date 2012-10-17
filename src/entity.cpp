@@ -4,50 +4,10 @@
 #include <string>
 
 
-const std::string strVertexShader(
-	"#version 330\n"
-	"layout(location = 0) in vec4 position;\n"
-	"void main()\n"
-	"{\n"
-	"   gl_Position = position;\n"
-	"}\n"
-);
-
-const std::string strFragmentShader(
-	"#version 330\n"
-	"out vec4 outputColor;\n"
-	"void main()\n"
-	"{\n"
-	"   outputColor = vec4(0.5f, 1.0f, 1.0f, 1.0f);\n"
-	"}\n"
-);
-
-Entity::Entity() :
-	positionBufferObject(0)
+Entity::Entity()
 {
-	const float vertexPositions[] = {
-		0.75f, 0.75f, 0.0f, 1.0f,
-		0.75f, -0.75f, 0.0f, 1.0f,
-		-0.75f, -0.75f, 0.0f, 1.0f,
-	};
-
-	glGenBuffers(1, &positionBufferObject);
-	glBindBuffer(GL_ARRAY_BUFFER, positionBufferObject);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	shaders.push_back(CreateShader(GL_VERTEX_SHADER, strVertexShader));
-	shaders.push_back(CreateShader(GL_FRAGMENT_SHADER, strFragmentShader));
-	shaderProgram = CreateProgram(shaders);
 
 }
-
-
-void Entity::setTexture(const char *file)
-{
-	assert(0);
-}
-
 
 void Entity::setSize(int width, int height)
 {
@@ -86,19 +46,9 @@ std::vector<int> Entity::getPosition()
 void Entity::draw()
 {
 
-	glUseProgram(shaderProgram);
-	glBindBuffer(GL_ARRAY_BUFFER, positionBufferObject);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-
-	glUseProgram(0);
-
 }
 
-
-
-GLuint CreateShader(GLenum eShaderType, const std::string &strShaderFile)
+GLuint Entity::CreateShader(GLenum eShaderType, const std::string &strShaderFile)
 {
 	GLuint shader = glCreateShader(eShaderType);
 	const char *strFileData = strShaderFile.c_str();
@@ -131,7 +81,7 @@ GLuint CreateShader(GLenum eShaderType, const std::string &strShaderFile)
 	return shader;
 }
 
-GLuint CreateProgram(const std::vector<GLuint> &shaderList)
+GLuint Entity::CreateProgram(const std::vector<GLuint> &shaderList)
 {
 	GLuint program = glCreateProgram();
 

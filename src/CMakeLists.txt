@@ -2,11 +2,13 @@
 set(GameFromScratch_src
     game.cpp
     entity.cpp
+    sprite.cpp
 )
 
 set(GameFromScratch_inc
     game.h
     entity.h
+    sprite.h
 )
 
 #Set the include directories
