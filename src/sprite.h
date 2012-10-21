@@ -13,6 +13,8 @@ public:
 private:
 	GLuint positionBufferObject;
 	GLuint IndexBufferId;
+	GLuint textureId;
+	GLuint vao;
 };
 
 
