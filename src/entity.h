@@ -8,10 +8,10 @@ class Entity
 public:
 	Entity();
 
-	void setSize(int width, int height);
-	std::vector<int> getSize();
-	void setPosition(int x, int y);
-	std::vector<int> getPosition();
+	void setSize(float width, float height);
+	std::vector<float> getSize();
+	void setPosition(float x, float y);
+	std::vector<float> getPosition();
 
 	virtual void draw();
 
@@ -19,7 +19,7 @@ protected:
 	GLuint CreateShader(GLenum eShaderType, const std::string &strShaderFile);
 	GLuint CreateProgram(const std::vector<GLuint> &shaderList);
 
-	int m_x, m_y, m_width, m_height;
+	float m_x, m_y, m_width, m_height;
 
 	std::vector<GLuint> shaders;
 	GLuint shaderProgram;

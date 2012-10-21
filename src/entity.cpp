@@ -11,16 +11,16 @@ Entity::Entity()
 
 }
 
-void Entity::setSize(int width, int height)
+void Entity::setSize(float width, float height)
 {
 	m_width = width;
 	m_height = height;
 }
 
 
-std::vector<int> Entity::getSize()
+std::vector<float> Entity::getSize()
 {
-	std::vector<int> size;
+	std::vector<float> size;
 	size.reserve(2);
 	size[0] = m_width;
 	size[1] = m_height;
@@ -28,16 +28,16 @@ std::vector<int> Entity::getSize()
 }
 
 
-void Entity::setPosition(int x, int y)
+void Entity::setPosition(float x, float y)
 {
 	m_x = x;
 	m_y = y;
 }
 
 
-std::vector<int> Entity::getPosition()
+std::vector<float> Entity::getPosition()
 {
-	std::vector<int> pos;
+	std::vector<float> pos;
 	pos.reserve(2);
 	pos[0] = m_x;
 	pos[1] = m_y;

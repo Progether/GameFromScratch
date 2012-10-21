@@ -11,6 +11,7 @@ public:
 	void setTexture();
 
 private:
+	void setTransforms();
 	GLuint positionBufferObject;
 	GLuint IndexBufferId;
 	GLuint textureId;

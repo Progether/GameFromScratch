@@ -10,10 +10,11 @@ const std::string strVertexShader(
 		"#version 330\n"
 		"in vec4 position;\n"
 		"in vec2 texcoord;\n"
+		"uniform vec4 transform;\n"
 		"out vec2 Texcoord;\n"
 		"void main()\n"
 		"{\n"
-		"   gl_Position = position;\n"
+		"   gl_Position = position * transform;\n"
 		"	Texcoord = texcoord;\n"
 		"}\n"
 		);
@@ -47,10 +48,10 @@ Sprite::Sprite()
 
 	const float textureCoords[] =
 	{
-		-10.0, -10.0,
-		10.0, -10.0,
-		10.0, 10.0,
-		-10.0, 10.0,
+		-5.0, -5.0,
+		5.0, -5.0,
+		5.0, 5.0,
+		-5.0, 5.0,
 	};
 
 	//Clear gl errors TODO:Need to look where the initial error is coming from.
@@ -87,7 +88,7 @@ Sprite::Sprite()
 	GL_CHECK( glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indexPositions), indexPositions, GL_STATIC_DRAW) );
 
 	setTexture();
-
+	setSize(0.25f, 0.25f);
 	glBindVertexArray(0);
 
 }
@@ -97,6 +98,7 @@ void Sprite::draw()
 {
 	GL_CHECK( glUseProgram(shaderProgram) );
 	GL_CHECK( glBindVertexArray(vao) );
+	setTransforms();
 
 	GL_CHECK( glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, (GLvoid*) 0) );
 }
@@ -123,4 +125,12 @@ void Sprite::setTexture()
 	};
 	GL_CHECK( glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 2, 2, 0, GL_RGB, GL_FLOAT, pixels) );
 
+}
+
+void Sprite::setTransforms()
+{
+	GLint transUnif;
+	transUnif = glGetUniformLocation( shaderProgram, "transform");
+
+	GL_CHECK( glUniform4f(transUnif, (float)m_width, (float)m_height, 1.0f, 1.0f) );
 }
