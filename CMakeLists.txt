@@ -8,7 +8,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 #Naively assume if on linux that the compiler is gcc or clang
 if(UNIX)
-    list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
+    list(APPEND CMAKE_CXX_FLAGS "-std=gnu++0x")
 endif(UNIX)
 
 add_subdirectory (src)

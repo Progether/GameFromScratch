@@ -1,4 +1,6 @@
 #include "entity.h"
+#include "base.h"
+
 #include <assert.h>
 #include <GL/glfw.h>
 #include <string>
@@ -52,9 +54,9 @@ GLuint Entity::CreateShader(GLenum eShaderType, const std::string &strShaderFile
 {
 	GLuint shader = glCreateShader(eShaderType);
 	const char *strFileData = strShaderFile.c_str();
-	glShaderSource(shader, 1, &strFileData, NULL);
+	GL_CHECK( glShaderSource(shader, 1, &strFileData, NULL) );
 
-	glCompileShader(shader);
+	GL_CHECK( glCompileShader(shader) );
 
 	GLint status;
 	glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
@@ -86,9 +88,9 @@ GLuint Entity::CreateProgram(const std::vector<GLuint> &shaderList)
 	GLuint program = glCreateProgram();
 
 	for(size_t iLoop = 0; iLoop < shaderList.size(); iLoop++)
-		glAttachShader(program, shaderList[iLoop]);
+		GL_CHECK( glAttachShader(program, shaderList[iLoop]) );
 
-	glLinkProgram(program);
+	GL_CHECK( glLinkProgram(program) );
 
 	GLint status;
 	glGetProgramiv (program, GL_LINK_STATUS, &status);

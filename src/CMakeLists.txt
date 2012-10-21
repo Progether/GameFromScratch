@@ -3,12 +3,14 @@ set(GameFromScratch_src
     game.cpp
     entity.cpp
     sprite.cpp
+    base.cpp
 )
 
 set(GameFromScratch_inc
     game.h
     entity.h
     sprite.h
+    base.h
 )
 
 #Set the include directories
@@ -63,6 +65,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 IF( USE_GLFW)
+    find_package(OpenGL)
     find_package(PkgConfig)
     pkg_check_modules(GLEW REQUIRED)
     if(GLEW_FOUND)

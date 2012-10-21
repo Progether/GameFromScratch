@@ -1,12 +1,20 @@
+#ifndef __SPRITE_H__
+#define __SPRITE_H__
+
 #include "entity.h"
 
-class sprite : public Entity
+class Sprite : public Entity
 {
 public:
-	sprite();
+	Sprite();
 	void draw();
+	void setTexture();
 
 private:
 	GLuint positionBufferObject;
 	GLuint IndexBufferId;
 };
+
+
+
+#endif //__SPRITE_H__
